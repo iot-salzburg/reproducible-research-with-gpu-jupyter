@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  gpu_jupyter:
+    container_name: gpu-jupyter
+    image: cschranz/gpu-jupyter:v1.8_cuda-12.5_ubuntu-22.04
+    build:
+      context: .
+    # Set hardware constraints
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              device_ids: ["all"]  # Select a specific GPU by its ID or "all"
+    # set CPU constraints
+    #     limits:
+    #       cpus: "31.0"
+    #       memory: 48g
+    # cpuset: 33-63
+    ports:
+      - 8889:8888
+    # Mount the whole project's directory into work
+    volumes:
+#      - /path/to/project:/home/jovyan/work
+      - /home/hma/MDIlab/gpu_jupyter_project/Reproducible-Research-with-GPU-Jupyter:/home/jovyan/work
+    environment:
+      GRANT_SUDO: "yes"
+      JUPYTER_ENABLE_LAB: "yes"
+      # user (id -u 1002) and group hma (1006)
+      NB_UID: 1002
+      NB_GID: 1006
+    ## Enable sudo permissions
+    user:
+      "root"
+    restart: always

@@ -1,0 +1,2 @@
+# List of used packages for this setup with pinned versions
+torchsummary==1.5.1
