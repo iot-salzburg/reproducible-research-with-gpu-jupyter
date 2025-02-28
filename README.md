@@ -34,7 +34,6 @@ This repository demonstrates how to use [GPU-Jupyter](https://github.com/iot-sal
 5. [Cite This Work](#cite-this-work)
 
 
-
 ---
 <br>
 
@@ -69,7 +68,7 @@ docker run --gpus all -it -p 8888:8888 \
     -v $(pwd):/home/jovyan/work \
     -e GRANT_SUDO=yes -e JUPYTER_ENABLE_LAB=yes \
     -e NB_UID=$(id -u) -e NB_GID=$(id -g) \
-    --user root cschranz/gpu-jupyter:v1.8_cuda-12.5_ubuntu-22.04
+    --user root cschranz/gpu-jupyter:v1.9_cuda-12.6_ubuntu-24.04
 ```
 
 Note the following Docker parameters:
@@ -187,7 +186,7 @@ GPU-Jupyter enables researchers to publish experiments with **full computational
 
 > The authors ensure the reproducibility of their work 
 > by providing all code, data, and environment details at `https://github.com/iot-salzburg/reproducible-research-with-gpu-jupyter`.
-> All experiments were conducted with `<CPU/RAM>` and `<GPU model name/number>` using the image `cschranz/gpu-jupyter:v1.8_cuda-12.5_ubuntu-22.04` as available on DockerHub.
+> All experiments were conducted with `<CPU/RAM>` and `<GPU model name/number>` using the image `cschranz/gpu-jupyter:v1.9_cuda-12.6_ubuntu-24.04` as available on DockerHub.
 
 <br>
 
@@ -216,7 +215,7 @@ docker build -t your-dockerhub-username/image-name:tag .
 ```
 
 - `-t` specifies the **tag**. Specify your own username and repository name for `your-dockerhub-username/image-name:tag`.
-- `.` means the **Dockerfile is in the current directory**.
+- `.` assumes the **Dockerfile to build is in the current directory**.
 
 Verify the image is built using:
 
@@ -255,56 +254,10 @@ Please make sure to describe which scripts or Notebooks have to be executed to r
 In the case of this example repository, reproduce the experiment by running the provided Jupyter Notebook under `src/modelling/train_ResNet.ipynb` and check if the identical results are yielded
 
 
-Include the **single-command execution** for reproducing your deep learning experiment in the research paper.
-This ensures that **future researchers can reproduce your work effortlessly** without additional setup steps.
+Include the **single-command execution** for reproducing your deep learning experiment in the research paper to **ensure future researchers can reproduce your work effortlessly** without additional setup steps.
 
 
 Ensure that the data within the repository is reasonably sized or downloaded during the execution of the experiment. Otherwise, a big dataset is included in the image stored on DockerHub thus being redundant.
-
-<!-- 
-TODO: commit and push the image as it is
-
-# 1️⃣ Find the running container
-docker ps
-
-# 2️⃣ Commit the current state of the container to a new image
-docker commit <container_id> your-dockerhub-username/image-name:tag
-
-# Example:
-docker commit 2af096ff9e32 cschranz/myproject:updated
-
-# 3️⃣ Verify the new image exists
-docker images
-
-# 4️⃣ Log in to Docker Hub (if not already logged in)
-docker login
-
-# 5️⃣ Push the new image to Docker Hub
-docker push your-dockerhub-username/image-name:tag
-
-# Example:
-docker push cschranz/myproject:updated
-
-# 6️⃣ (Optional) Tag the new image as "latest" and push it
-docker tag your-dockerhub-username/image-name:tag your-dockerhub-username/image-name:latest
-docker push your-dockerhub-username/image-name:latest
-
-# Example:
-docker tag cschranz/myproject:updated cschranz/myproject:latest
-docker push cschranz/myproject:latest
-
-# 7️⃣ (Optional) Pull the updated image on another machine
-docker pull your-dockerhub-username/image-name:tag
-
-# Example:
-docker pull cschranz/myproject:updated
-
-# 8️⃣ (Optional) Run the new image
-docker run -it --rm your-dockerhub-username/image-name:tag
-
-# Example:
-docker run -it --rm cschranz/myproject:updated
--->
 
 
 <br>

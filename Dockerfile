@@ -1,5 +1,5 @@
 # This Dockerfile builds the image of the deep learning experiment
-FROM cschranz/gpu-jupyter:v1.8_cuda-12.5_ubuntu-22.04
+FROM cschranz/gpu-jupyter:v1.9_cuda-12.6_ubuntu-24.04
 LABEL authors="Your Name <e-mail@example.com>"
 
 # #############################################################
