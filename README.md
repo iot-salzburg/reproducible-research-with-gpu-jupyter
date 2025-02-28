@@ -1,16 +1,9 @@
 # Reproducible Deep Learning Research with GPU-Jupyter: A Demo Project  
 
-This repository demonstrates how to use [**GPU-Jupyter**](https://github.com/iot-salzburg/gpu-jupyter) to ensure **reproducible deep learning research** with minimal setup effort.  
+**This repository demonstrates how to use [GPU-Jupyter](https://github.com/iot-salzburg/gpu-jupyter) to ensure reproducible deep learning research with minimal setup effort.**  
 
-**Reproducibility is a fundamental requirement of the scientific method.** However, many meta-studies highlight a reproducibility crisis across scientific disciplines.
-
-[**GPU-Jupyter**](https://github.com/iot-salzburg/gpu-jupyter) is a flexible and efficient **framework for reproducible deep learning experiments** by encapsulating the entire experimental setup into an isolated, GPU-supported containerized environment. This approach mitigates version conflicts, ensures a well-defined setup, and streamlines the sharing and collaboration of customized images.  
-
-This repository demonstrates:  
-
-- How to **reproduce existing research**.  
-- How to **make your own deep learning experiments reproducible** in a single command.  
-
+Reproducibility is a fundamental requirement of the scientific method. However, many meta-studies highlight a reproducibility crisis across scientific disciplines.
+[**GPU-Jupyter**](https://github.com/iot-salzburg/gpu-jupyter) is a flexible and efficient **framework for reproducible deep learning experiments** by encapsulating the entire experimental setup into an isolated, GPU-supported containerized environment. This approach mitigates version conflicts, ensures a well-defined setup, and streamlines the sharing and collaboration of research.  
 
 ![Four pillars of reproducibility](data/reproducible_research_low.png)  
 
@@ -22,6 +15,10 @@ Reproducibility in deep learning is facilitated by four key pillars:
 4. **Reproducible Setup**: Computational environments should be well-defined and portable.  
 
 **GPU-Jupyter specifically addresses the fourth pillar** by a **containerized deep learning setup** that ensures experiments can be executed and verified seamlessly across different systems.  
+This repository demonstrates how to use [GPU-Jupyter](https://github.com/iot-salzburg/gpu-jupyter) to:  
+
+- **reproduce existing research**.  
+- **make your own deep learning experiments reproducible in a single command**.  
 
 
 ## Table of Contents
@@ -39,19 +36,21 @@ Reproducibility in deep learning is facilitated by four key pillars:
 
 
 ---
+<br>
 
 ## Requirements  
 
 To use GPU-Jupyter, the following components must be installed on the host system:
 
-- **NVIDIA GPU**: A compatible NVIDIA GPU is required to accelerate deep learning computations, leveraging its parallel processing capabilities for efficient matrix operations.  
+- **NVIDIA GPU**: A compatible NVIDIA GPU is required to accelerate deep learning computations.  
 - **NVIDIA CUDA Drivers**: The CUDA toolkit provides the necessary drivers and runtime libraries that enable GPU acceleration for deep learning frameworks like PyTorch and TensorFlow. GPU-Jupyter is built on NVIDIA’s official CUDA Docker images to ensure compatibility. Install the latest version from [NVIDIA CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit).  
 - **Docker Engine**: [Docker](https://www.docker.com/get-started) ensures a reproducible execution environment by isolating deep learning experiments from the host system, preventing dependency conflicts and facilitating portability.  
 - **NVIDIA Container Toolkit**: This toolkit allows Docker containers to access GPU resources on the host system, ensuring full hardware acceleration inside the containerized deep learning environment. Official installation instructions are available on [NVIDIA’s GitHub repository](https://github.com/NVIDIA/nvidia-container-toolkit).  
 
+For the setup on the host server, please follow the installation steps in this article [Medium.com/Set up Your own GPU-based Jupyter easily using Docker](https://cschranz.medium.com/set-up-your-own-gpu-based-jupyterlab-e0d45fcacf43). 
 
 ---
-
+<br>
 
 
 ## Reproduce a Deep Learning Experiment
@@ -82,14 +81,13 @@ Note the following Docker parameters:
 - **`-e GRANT_SUDO=yes`**: Grants the Jupyter user (`jovyan`) sudo privileges inside the container, allowing administrative commands if needed.  
 - **`-e JUPYTER_ENABLE_LAB=yes`**: Ensures JupyterLab (instead of the classic Jupyter Notebook interface) is enabled when the container starts.  
 - **`-e NB_UID=$(id -u) -e NB_GID=$(id -g)`**: Sets the **user ID (UID) and group ID (GID)** inside the container to match the host system’s user, preventing permission issues when accessing mounted files.  
-- **`--user root`**: Runs the container as the **root user**, allowing unrestricted access to system configurations and software installations within the container.  
-
+- **`--user root`**: This is the default configuration for running Jupyter within containers, allowing unrestricted access to system configurations and software installations in the isolated environment.  
 
 
 
 **2. Open JupyterLab**
 
-Access JupyterLab at [http://localhost:8888](http://localhost:8888) and enter the access token printed in the Docker output:
+Access JupyterLab at [http://localhost:8888](http://localhost:8888) (or the ip/hostname of the server instead of localhost with the specified port) and enter the access token printed in the Docker output:
 
 ```bash
 [C 2025-02-17 12:25:57.988 ServerApp]
@@ -102,6 +100,12 @@ Access JupyterLab at [http://localhost:8888](http://localhost:8888) and enter th
 
 Then navigate in JuperLab's file explorer into `work/reproducible-research-with-gpu-jupyter/` and check out the project directory.
 
+When mounting a directory into a container, inconsistent user permissions can lead to files and directories being hidden in Jupyter's file explorer. To ensure proper ownership, open a terminal in JupyterLab and run:  
+
+```bash
+ll  # check user permissions
+sudo chown -R jovyan.users work/
+```
 
 **3. Clone the Experiment Repository**
 
@@ -122,15 +126,9 @@ Randomness is controlled by providing random seeds for functions in numpy, PyTor
 
 #### Alternative Setup Using Docker Compose for Configuration Management
 
-Instead of specifying all parameters manually in a `docker run` command, **Docker Compose** allows for a structured, version-controlled setup by defining configurations in the local `docker-compose.yml` file. This approach is especially useful for managing multiple services, maintaining reproducibility, and simplifying container deployment.  
+Instead of specifying all parameters manually in a `docker run` command, **Docker Compose** allows for a structured, version-controlled setup by defining configurations in the local `docker-compose.yml` file. Using a `docker-compose.yml` is particularly useful for **version-controlled setup configuration** in Git, **reusable setup** across different systems, and **simplified container management** to organize multiple services. Please find an example for this repository in `docker-compose.yml`, which constraints hardware resources (as often used for shared physical setups).
 
-Using a `docker-compose.yml` has benefits in terms of:
-
-- **Version-controlled configuration**: Easily track changes in Git.  
-- **Reusable setup**: Simplifies launching the environment across different systems.  
-- **Automatic container management**: Easily start, stop, and restart the service.  
-
-**Basic `docker-compose` Commands**  
+**Basic `docker-compose` Commands:**  
 
 1. **Start GPU-Jupyter** (in the background):  
    ```bash
@@ -143,16 +141,13 @@ Using a `docker-compose.yml` has benefits in terms of:
    ```bash
    docker-compose down
    ```
-   - Stops and removes the running container(s) and associated network.  
-
 3. **View logs in real time**:  
    ```bash
    docker-compose logs -f
    ```
-   - Displays container logs, useful for debugging and monitoring.  
 
 
-
+<br>
 
 ### Variant 2: Reproducing Existing Work with a Customized GPU-Jupyter Setup  
 
@@ -166,8 +161,8 @@ docker run --gpus all --rm -it -p 8888:8888 cschranz/reproducible-research-with-
 
 **Key Considerations:**  
 
-- **Use the exact image provided by the experiment's authors** to ensure a **fully consistent computational environment**.  
-- The example image `cschranz/reproducible-research-with-gpu-jupyter:v1.0` demonstrates a reproducible setup, but this should be replaced with the actual image reference from the research publication.  
+- **Use the exact image provided only by the experiment's authors (for security reasons)** to ensure a **fully consistent computational environment**.  
+- The example image `cschranz/reproducible-research-with-gpu-jupyter:v1.0` demonstrates a reproducible setup for this repository, but this should be replaced with the actual image reference from the research publication.  
 - **No additional dependencies need to be installed**—the environment is already pre-configured within the container.  
 
 This approach ensures that **any researcher can replicate the original computational setup** with minimal effort, making deep learning research more accessible, reliable, and reproducible.
@@ -175,6 +170,7 @@ This approach ensures that **any researcher can replicate the original computati
 
 
 
+<br>
 
 ## Make Your Own Research Reproducible  
 
@@ -187,22 +183,22 @@ GPU-Jupyter enables researchers to publish experiments with **full computational
 3. Specify the **exact GPU-Jupyter image** used in the research paper.  
 4. Explain all additional steps required for the setup and reproduction of the experiment.
 
-Example Open Science statement for a publication:  
+**Example Open Science statement for your publication:**
 
-> The authors ensure reproducibility by providing all code, data, and environment details at  
-> [https://github.com/iot-salzburg/reproducible-research-with-gpu-jupyter](https://github.com/iot-salzburg/reproducible-research-with-gpu-jupyter).  
-> All experiments were conducted using the **GPU-Jupyter** image:  
-> `cschranz/gpu-jupyter:v1.8_cuda-12.5_ubuntu-22.04`  
+> The authors ensure the reproducibility of their work 
+> by providing all code, data, and environment details at `https://github.com/iot-salzburg/reproducible-research-with-gpu-jupyter`.
+> All experiments were conducted with `<CPU/RAM>` and `<GPU model name/number>` using the image `cschranz/gpu-jupyter:v1.8_cuda-12.5_ubuntu-22.04` as available on DockerHub.
+
+<br>
 
 
 ### Variant 2: Publishing in a Customized GPU-Jupyter image 
 
-
-For seamless **reproducibility in one single command**, publish a **customized GPU-Jupyter image** that includes the entire experiment.  
+For the **reproducibility of your deep learning research in only one single command**, a **customized GPU-Jupyter image** can be built and published that includes the entire experiment.  
 
 **Step 1: Define the Dockerfile**
 
-Build a **Dockerfile** that installs all required dependencies. Use an appropriate tagged GPU-Jupyter image as base image and declare  the full computational setup of your experiment from there, such as installations in package managers like `pip`. Use the local `Dockerfile` as an example.
+Build a **Dockerfile** that installs all required dependencies. Use an appropriate tagged GPU-Jupyter image as base image and declare the full computational setup of your experiment from there, such as installations in package managers like `pip`. Use the local `Dockerfile` as an example. It is encouraged that datasets are externally referred (open data repos) or reasonably sized (compressed, no redundancy, etc.), as otherwise, the data size of the resulting image may be huge.
 
 **Step 2: Log in to Docker Hub**
 
@@ -242,9 +238,9 @@ docker push your-dockerhub-username/image-name:tag
 
 
 
-**Step 5 (optional): Verify if it worked: Pull and Run the Image**
+**Step 5: Verify if it worked: Pull and Run the Image**
 
-To test on another machine, pull and run your image using:
+Optimally, test on another machine by pulling and running your image using:
 
 ```sh
 docker run --gpus all --rm -it -p 8888:8888 your-dockerhub-username/image-name:tag
@@ -255,13 +251,15 @@ To reproduce the experiment within the repository, run:
 ```sh
 docker run --gpus all --rm -it -p 8888:8888 cschranz/reproducible-research-with-gpu-jupyter:v1.0
 ```
+Please make sure to describe which scripts or Notebooks have to be executed to reproduce your research. 
+In the case of this example repository, reproduce the experiment by running the provided Jupyter Notebook under `src/modelling/train_ResNet.ipynb` and check if the identical results are yielded
 
 
 Include the **single-command execution** for reproducing your deep learning experiment in the research paper.
 This ensures that **future researchers can reproduce your work effortlessly** without additional setup steps.
 
 
-Make sure that the data within the repository is reasonable sized or downloaded during execution of the experiment. Otherwise, a big dataset might be included in the image stored on DockerHub which is a redundant storage of data.
+Ensure that the data within the repository is reasonably sized or downloaded during the execution of the experiment. Otherwise, a big dataset is included in the image stored on DockerHub thus being redundant.
 
 <!-- 
 TODO: commit and push the image as it is
@@ -309,32 +307,35 @@ docker run -it --rm cschranz/myproject:updated
 -->
 
 
+<br>
+
 ## More information
 
 ### Learn More About JupyterLab  
 
-<!-- 
-TODO: link YouTube Tutorial.
--->
-Here is a great tutorial on how to use JupyterLab:
+Here is a tutorial on how to use JupyterLab:
 
 [![Project Jupyter: How to Use JupyterLab](https://i3.ytimg.com/vi/A5YyoCKxEOU/maxresdefault.jpg)](https://www.youtube.com/watch?v=A5YyoCKxEOU)
+
+    Video: Introductory tutorial on the use of JupyterLab.  Created by Van Yang. Source: official channel of Jupyter on YouTube
 
 
 ### Customizing the Docker Container for Your Project  
 
 GPU-Jupyter allows flexible configuration for **various deep learning workflows**:  
 
-- Run **detached containers** using `-d` to keep them running in the background.  
-- Set a **static access token** for persistent authentication as described among other configurations in [github.com/GPU-Jupyter](https://github.com/iot-salzburg/gpu-jupyter).  
+- Run **detached containers** using `-d` to keep them running in the background. Find more Docker commands in [Docker-Docs](https://docs.docker.com/).
+- Set a **static access token** for persistent authentication, as described among other configurations in [github.com/GPU-Jupyter](https://github.com/iot-salzburg/gpu-jupyter).  
 - Enable **sudo privileges** within the container using `-e GRANT_SUDO=yes`.  
+- Adapt file ownership and permissions of mounted directories, e.g., ensure proper ownership:  
 
-For permission issues, ensure proper ownership:  
+    ```bash
+    sudo chown -R jovyan.users work/  # set ownership
+    sudo chmod -R 660 work/           # set read and write permissions for the owning group
+    sudo chmod -R g+X work/           # set the executable permission
+    ```
 
-```bash
-sudo chown -R jovyan.users work/
-```
-
+<br>
 
 ## Cite This Work  
 
@@ -346,9 +347,5 @@ GPU-Jupyter: A Framework for Reproducible Deep Learning Research.
 [Manuscript submitted for publication] In Interdisciplinary Data Science Conference.  
 ```
 
---- 
 
 By streamlining environment management, **GPU-Jupyter reduces barriers to reproducibility**, fostering an open and trustworthy research culture. 
-
-
-

@@ -13,13 +13,13 @@ services:
             - driver: nvidia
               capabilities: [gpu]
               device_ids: ["all"]  # Select a specific GPU by its ID or "all"
-    # set CPU constraints
-    #     limits:
-    #       cpus: "31.0"
-    #       memory: 48g
-    # cpuset: 33-63
+    set CPU constraints
+        limits:
+          cpus: "31.0"
+          memory: 48g
+    cpuset: 3-31
     ports:
-      - 8889:8888
+      - 8848:8888
     # Mount the whole project's directory into work
     volumes:
 #      - /path/to/project:/home/jovyan/work
