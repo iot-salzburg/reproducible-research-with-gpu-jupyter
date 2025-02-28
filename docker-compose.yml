@@ -13,7 +13,7 @@ services:
             - driver: nvidia
               capabilities: [gpu]
               device_ids: ["all"]  # Select a specific GPU by its ID or "all"
-    set CPU constraints
+#    set CPU constraints
         limits:
           cpus: "31.0"
           memory: 48g
