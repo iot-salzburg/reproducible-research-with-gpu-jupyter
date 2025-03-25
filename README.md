@@ -1,6 +1,7 @@
 # Reproducible Deep Learning Research with GPU-Jupyter: A Demo Project  
 
 **This repository demonstrates how to use [GPU-Jupyter](https://github.com/iot-salzburg/gpu-jupyter) to ensure reproducible deep learning research with minimal setup effort.**  
+**Please find blog-article for this repository at [🧪 Reproducible Deep Learning Experiments with One Command: GPU-Jupyter](https://cschranz.medium.com/reproducible-deep-learning-experiments-with-one-command-gpu-jupyter-b604864504a9).**
 
 Reproducibility is a fundamental requirement of the scientific method. However, many meta-studies highlight a reproducibility crisis across scientific disciplines.
 [**GPU-Jupyter**](https://github.com/iot-salzburg/gpu-jupyter) is a flexible and efficient **framework for reproducible deep learning experiments** by encapsulating the entire experimental setup into an isolated, GPU-supported containerized environment. This approach mitigates version conflicts, ensures a well-defined setup, and streamlines the sharing and collaboration of research.  
