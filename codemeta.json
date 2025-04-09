@@ -1,48 +1,53 @@
 {
+  "@context": "https://w3id.org/codemeta/3.0",
+  "@type": "SoftwareSourceCode",
   "name": "Reproducible Research with GPU-Jupyter: Fine-tuning ResNet",
   "description": "This repository demonstrates a reproducible deep learning experiment using GPU-Jupyter to fine-tune a ResNet model on the EuroSAT dataset. The full computational environment is encapsulated in a container based on GPU-Jupyter.",
   "version": "1.0.0",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dateCreated": "2025-04-09",
   "authors": [
     {
-      "name": "Christoph Schranz",
-      "affiliation": "Salzburg Research",
-      "orcid": "https://orcid.org/0000-0002-5786-7807"
+      "@type": "Person",
+      "@id": "https://orcid.org/0000-0002-5786-7807",
+      "givenName": "Christoph",
+      "familyName": "Schranz",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Salzburg Research"
+      }
     }
   ],
+  "maintainer": {
+    "@type": "Person",
+    "@id": "https://orcid.org/0000-0002-5786-7807",
+    "givenName": "Christoph",
+    "familyName": "Schranz",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Salzburg Research"
+    }
+  },
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "Python",
+    "version": "3.12",
+    "identifier": "https://w3id.org/codemeta/terms/Python"
+  },
   "softwareRequirements": [
     {
+      "@type": "SoftwareApplication",
       "name": "GPU-Jupyter",
       "version": "v1.9_cuda-12.6_ubuntu-24.04",
-      "image": "cschranz/gpu-jupyter:v1.9_cuda-12.6_ubuntu-24.04",
-      "repository": "https://github.com/iot-salzburg/gpu-jupyter"
+      "identifier": "https://github.com/iot-salzburg/gpu-jupyter"
     },
     {
-      "name": "Python",
-      "version": "3.12"
-    },
-    {
+      "@type": "SoftwareApplication",
       "name": "torchsummary",
-      "version": "1.5.1",
-      "installCommand": "pip install torchsummary==1.5.1"
+      "version": "1.5.1"
     }
   ],
-  "inputs": [
-    {
-      "description": "EuroSAT dataset is automatically downloaded by executing the notebook.",
-      "source": "https://github.com/phelber/eurosat"
-    }
-  ],
-  "outputs": [
-    "src/ResNet_results.csv",
-    "src/model.pt"
-  ],
-  "execution": {
-    "notebook": "src/Finetune_ResNet.ipynb",
-    "instructions": "Execute the notebook from start to end to download input data and generate results."
-  },
-  "repository": "https://github.com/iot-salzburg/reproducible-research-with-gpu-jupyter",
+  "codeRepository": "https://github.com/iot-salzburg/reproducible-research-with-gpu-jupyter",
   "keywords": [
     "reproducible research",
     "deep learning",
