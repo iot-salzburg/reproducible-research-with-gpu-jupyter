@@ -26,10 +26,10 @@ services:
     environment:
       GRANT_SUDO: "yes"
       JUPYTER_ENABLE_LAB: "yes"
-      # user (id -u 1002) and group hma (1006)
+      # user (id -u 1002) and group (id -g 1006)
       NB_UID: 1002
       NB_GID: 1006
     ## Enable sudo permissions
     user:
       "root"
-    restart: always
+    restart: unless-stopped
