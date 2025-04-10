@@ -1,11 +1,11 @@
 {
   "@context": "https://w3id.org/codemeta/3.0",
   "@type": "SoftwareSourceCode",
-  "name": "Reproducible Research with GPU-Jupyter: Fine-tuning ResNet",
-  "description": "This repository demonstrates a reproducible deep learning experiment using GPU-Jupyter to fine-tune a ResNet model on the EuroSAT dataset. The full computational environment is encapsulated in a container based on GPU-Jupyter.",
+  "name": "Reproducible Deep Learning Research with GPU-Jupyter: A Demo Project",
+  "description": "This repository demonstrates GPU-Jupyter, a framework for reproducible deep learning research. The demo goal is to fine-tune a ResNet model on the EuroSAT dataset. The full computational environment is encapsulated in a container based on GPU-Jupyter.",
   "version": "1.0.0",
   "license": "Apache-2.0",
-  "dateCreated": "2025-04-09",
+  "dateCreated": "2025-05-28",
   "authors": [
     {
       "@type": "Person",
@@ -39,7 +39,7 @@
       "@type": "SoftwareApplication",
       "name": "GPU-Jupyter",
       "version": "v1.9_cuda-12.6_ubuntu-24.04",
-      "identifier": "https://github.com/iot-salzburg/gpu-jupyter"
+      "identifier": "https://hub.docker.com/layers/cschranz/gpu-jupyter/v1.9_cuda-12.6_ubuntu-24.04/images/sha256-64ac12bc374b58ff5cba7b8cb079e7a1cfeab7e4b5a9b517d85d020abe1e7c15"
     },
     {
       "@type": "SoftwareApplication",

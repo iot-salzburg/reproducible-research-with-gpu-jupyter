@@ -6,8 +6,8 @@ authors:
     given-names: Christoph
     orcid: https://orcid.org/0000-0002-5786-7807
     affiliation: Salzburg Research
-  - family-names: Schranz
-    given-names: Pilosov
+  - family-names: Pilosov
+    given-names: Michael
     orcid: https://orcid.org/0000-0002-9119-4140
     affiliation: Mind the Math, LLC
   - family-names: Beeking
@@ -16,7 +16,7 @@ authors:
     affiliation: Salzburg Research
 date-released: 2025-05-28
 version: "1.0"
-license: "Apache 2.0"
+license: "Apache-2.0"
 # doi: 10.5281/zenodo.1000000
 repository-code: https://github.com/iot-salzburg/reproducible-research-with-gpu-jupyter
 keywords:
