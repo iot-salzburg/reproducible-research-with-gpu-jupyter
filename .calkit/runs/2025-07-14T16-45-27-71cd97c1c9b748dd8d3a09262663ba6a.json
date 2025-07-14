@@ -1,0 +1,135 @@
+{
+  "id": "71cd97c1c9b748dd8d3a09262663ba6a",
+  "system_id": "02370e63f35432272210c47c836b1159ee4230ab",
+  "start_time": "2025-07-14T16:45:27.832904+00:00",
+  "end_time": "2025-07-14T16:45:37.790835+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "failed",
+  "stages": {
+    "_check-env-main": {
+      "start_time": "2025-07-14T16:45:28.009000",
+      "end_time": "2025-07-14T16:45:28.740000",
+      "status": "completed"
+    },
+    "_clean-nb-run-notebook": {
+      "start_time": "2025-07-14T16:45:28.740000",
+      "end_time": "2025-07-14T16:45:30.705000",
+      "status": "completed"
+    },
+    "run-notebook": {
+      "start_time": "2025-07-14T16:45:30.705000",
+      "end_time": "2025-07-14T16:45:37.612000",
+      "status": "failed"
+    }
+  },
+  "git_rev": "84dcb407898bbfa9959e938c7173fdb99c021efa",
+  "git_branch": "calkit",
+  "git_changed_files_before": [
+    "calkit.yaml",
+    "docs/calkit.md"
+  ],
+  "git_staged_files_before": [
+    ".calkit/env-locks/main.json"
+  ],
+  "git_untracked_files_before": [
+    ".calkit/systems/02370e63f35432272210c47c836b1159ee4230ab.json",
+    "dvc.yaml"
+  ],
+  "git_changed_files_after": [
+    "calkit.yaml",
+    "docs/calkit.md",
+    "src/ResNet_results.csv",
+    "src/model.pt"
+  ],
+  "git_staged_files_after": [
+    ".calkit/env-locks/main.json"
+  ],
+  "git_untracked_files_after": [
+    ".calkit/notebooks/cleaned/src/Finetune_ResNet.ipynb",
+    ".calkit/systems/02370e63f35432272210c47c836b1159ee4230ab.json",
+    "dvc.lock",
+    "dvc.yaml"
+  ],
+  "dvc_status_before": {
+    "_check-env-main": [
+      {
+        "changed deps": {
+          "Dockerfile": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          ".calkit/env-locks/main.json": "modified"
+        }
+      },
+      "always changed"
+    ],
+    "_clean-nb-run-notebook": [
+      {
+        "changed deps": {
+          "src/Finetune_ResNet.ipynb": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          ".calkit/notebooks/cleaned/src/Finetune_ResNet.ipynb": "deleted"
+        }
+      }
+    ],
+    "run-notebook": [
+      {
+        "changed deps": {
+          ".calkit/notebooks/cleaned/src/Finetune_ResNet.ipynb": "deleted",
+          ".calkit/env-locks/main.json": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "src/model.pt": "modified",
+          "src/ResNet_results.csv": "modified",
+          ".calkit/notebooks/executed/src/Finetune_ResNet.ipynb": "deleted",
+          ".calkit/notebooks/html/src/Finetune_ResNet.html": "deleted"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": []
+  },
+  "dvc_status_after": {
+    "_check-env-main": [
+      "always changed"
+    ],
+    "run-notebook": [
+      {
+        "changed deps": {
+          ".calkit/notebooks/cleaned/src/Finetune_ResNet.ipynb": "modified",
+          ".calkit/env-locks/main.json": "modified"
+        }
+      },
+      {
+        "changed outs": {
+          "src/model.pt": "deleted",
+          "src/ResNet_results.csv": "deleted",
+          ".calkit/notebooks/executed/src/Finetune_ResNet.ipynb": "deleted",
+          ".calkit/notebooks/html/src/Finetune_ResNet.html": "deleted"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": []
+  }
+}

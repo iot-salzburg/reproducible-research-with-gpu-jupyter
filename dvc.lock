@@ -1,0 +1,59 @@
+schema: '2.0'
+stages:
+  _check-env-main:
+    cmd: calkit check environment --name main
+    deps:
+    - path: Dockerfile
+      hash: md5
+      md5: 98aeddb682be14a44ba9efa7453e282f
+      size: 976
+    - path: requirements.txt
+      hash: md5
+      md5: fb2e93ea3d68ed3b0a92994fd7797d96
+      size: 120
+    outs:
+    - path: .calkit/env-locks/main.json
+      hash: md5
+      md5: eea0f607990685ac449f9a77d585bd93
+      size: 6192
+  _clean-nb-run-notebook:
+    cmd: calkit nb clean "src/Finetune_ResNet.ipynb"
+    deps:
+    - path: src/Finetune_ResNet.ipynb
+      hash: md5
+      md5: 1d0b0db1e61e4e352cb4886b3c9b791e
+      size: 189635
+    outs:
+    - path: .calkit/notebooks/cleaned/src/Finetune_ResNet.ipynb
+      hash: md5
+      md5: 2d894b08a39229cd5526c7d7172c79c0
+      size: 18437
+  run-notebook:
+    cmd: calkit nb execute --environment main --no-check --to html 
+      "src/Finetune_ResNet.ipynb"
+    deps:
+    - path: .calkit/env-locks/main.json
+      hash: md5
+      md5: eea0f607990685ac449f9a77d585bd93
+      size: 6192
+    - path: .calkit/notebooks/cleaned/src/Finetune_ResNet.ipynb
+      hash: md5
+      md5: 2d894b08a39229cd5526c7d7172c79c0
+      size: 18437
+    outs:
+    - path: .calkit/notebooks/executed/src/Finetune_ResNet.ipynb
+      hash: md5
+      md5: 081141b3c075b0aa758128905ccf6b52
+      size: 200593
+    - path: .calkit/notebooks/html/src/Finetune_ResNet.html
+      hash: md5
+      md5: 6203ee5ac13d11f48e178740c36990eb
+      size: 506580
+    - path: src/ResNet_results.csv
+      hash: md5
+      md5: 574c69a4814721924eaf2ad333cb6d2c
+      size: 395
+    - path: src/model.pt
+      hash: md5
+      md5: 24611e7029f36f772cee5b270cd0d95e
+      size: 44809922

@@ -16,14 +16,6 @@ ADD requirements.txt .
 RUN pip install -r requirements.txt
 
 # #############################################################
-# ##################### Copy the content ######################
-# #############################################################
-
-# Copy the content of this repository into the directory
-RUN mkdir /home/jovyan/work/reproducible_project
-ADD . /home/jovyan/work/reproducible_project
-
-# #############################################################
 # ###################### Set environment ######################
 # #############################################################
 

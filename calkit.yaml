@@ -1,10 +1,9 @@
 owner: petebachant
 name: reproducible-research-with-gpu-jupyter
 title: "Reproducible Deep Learning Research with GPU-Jupyter: A Demo Project"
-description: A fork of 
+description: A fork of
   iot-salzburg/reproducible-research-with-gpu-jupyter.
-git_repo_url: 
-  https://github.com/petebachant/reproducible-research-with-gpu-jupyter
+git_repo_url: https://github.com/petebachant/reproducible-research-with-gpu-jupyter
 environments:
   main:
     kind: docker
@@ -42,5 +41,11 @@ pipeline:
       description:
       notebook_path: src/Finetune_ResNet.ipynb
       cleaned_ipynb_storage: git
-      executed_ipynb_storage: dvc
+      executed_ipynb_storage: git
       html_storage: git
+notebooks:
+  - path: src/Finetune_ResNet.ipynb
+    title: "Reproducible Deep Learning Experiment: Land Use Classification
+      with EuroSAT"
+    description: The main training and evaluation notebook.
+    stage: run-notebook
