@@ -81,5 +81,17 @@
     "DockerfileMD5": "98aeddb682be14a44ba9efa7453e282f",
     "DepsMD5s": {
         "requirements.txt": "fb2e93ea3d68ed3b0a92994fd7797d96"
-    }
+    },
+    "Platform": "linux/amd64",
+    "WorkDir": "/home/jovyan/work",
+    "User": "root",
+    "EnvVars": {
+        "GRANT_SUDO": "yes",
+        "JUPYTER_ENABLE_LAB": "yes",
+        "NB_UID": "$(id -u)",
+        "NB_GID": "$(id -g)"
+    },
+    "Ports": [
+        "8888:8888"
+    ]
 }

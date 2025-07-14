@@ -14,8 +14,8 @@ stages:
     outs:
     - path: .calkit/env-locks/main.json
       hash: md5
-      md5: eea0f607990685ac449f9a77d585bd93
-      size: 6192
+      md5: 7ece45dc3f5d0778103637f3232cb1d7
+      size: 6470
   _clean-nb-run-notebook:
     cmd: calkit nb clean "src/Finetune_ResNet.ipynb"
     deps:
@@ -34,8 +34,8 @@ stages:
     deps:
     - path: .calkit/env-locks/main.json
       hash: md5
-      md5: eea0f607990685ac449f9a77d585bd93
-      size: 6192
+      md5: 7ece45dc3f5d0778103637f3232cb1d7
+      size: 6470
     - path: .calkit/notebooks/cleaned/src/Finetune_ResNet.ipynb
       hash: md5
       md5: 2d894b08a39229cd5526c7d7172c79c0
@@ -43,12 +43,12 @@ stages:
     outs:
     - path: .calkit/notebooks/executed/src/Finetune_ResNet.ipynb
       hash: md5
-      md5: 081141b3c075b0aa758128905ccf6b52
-      size: 200593
+      md5: 2997c95068479f390b1f73264ec63aa9
+      size: 200813
     - path: .calkit/notebooks/html/src/Finetune_ResNet.html
       hash: md5
-      md5: 6203ee5ac13d11f48e178740c36990eb
-      size: 506580
+      md5: 3de91c1b9b5a76bd6e8ac246956c7ab6
+      size: 506924
     - path: src/ResNet_results.csv
       hash: md5
       md5: 574c69a4814721924eaf2ad333cb6d2c

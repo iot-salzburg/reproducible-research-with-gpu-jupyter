@@ -12,7 +12,7 @@ environments:
     path: Dockerfile
     platform: linux/amd64
     user: root
-    # gpus: all
+    # gpus: all # Uncomment this line to enable GPU support
     env_vars:
       GRANT_SUDO: yes
       JUPYTER_ENABLE_LAB: yes
