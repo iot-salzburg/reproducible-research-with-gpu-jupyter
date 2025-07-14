@@ -1,7 +1,46 @@
 owner: petebachant
 name: reproducible-research-with-gpu-jupyter
-title: 'Reproducible Deep Learning Research with GPU-Jupyter: A Demo Project'
+title: "Reproducible Deep Learning Research with GPU-Jupyter: A Demo Project"
 description: A fork of 
   iot-salzburg/reproducible-research-with-gpu-jupyter.
 git_repo_url: 
   https://github.com/petebachant/reproducible-research-with-gpu-jupyter
+environments:
+  main:
+    kind: docker
+    image: reproducible-research-with-gpu-jupyter-main
+    wdir: /home/jovyan/work
+    path: Dockerfile
+    platform: linux/amd64
+    user: root
+    # gpus: all
+    env_vars:
+      GRANT_SUDO: yes
+      JUPYTER_ENABLE_LAB: yes
+      NB_UID: $(id -u)
+      NB_GID: $(id -g)
+    deps:
+      - requirements.txt
+    ports:
+      - 8888:8888
+pipeline:
+  stages:
+    run-notebook:
+      kind: jupyter-notebook
+      environment: main
+      wdir:
+      inputs: []
+      outputs:
+        - path: src/model.pt
+          storage: git
+          delete_before_run: true
+        - path: src/ResNet_results.csv
+          storage: git
+          delete_before_run: true
+      always_run: false
+      iterate_over:
+      description:
+      notebook_path: src/Finetune_ResNet.ipynb
+      cleaned_ipynb_storage: git
+      executed_ipynb_storage: dvc
+      html_storage: git
