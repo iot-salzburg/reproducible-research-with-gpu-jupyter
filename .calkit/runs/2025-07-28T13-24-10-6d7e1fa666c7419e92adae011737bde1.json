@@ -1,0 +1,73 @@
+{
+  "id": "6d7e1fa666c7419e92adae011737bde1",
+  "system_id": "913ccbf596607670296729091ec03da8eef64ba8",
+  "start_time": "2025-07-28T13:24:10.793631+00:00",
+  "end_time": "2025-07-28T13:24:15.282358+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "failed",
+  "stages": {
+    "_check-env-main": {
+      "start_time": "2025-07-28T13:24:11.812000",
+      "end_time": "2025-07-28T13:24:13.520000",
+      "status": "failed"
+    }
+  },
+  "git_rev": "95352556ee3cb3078e20f9751e1b48415cbb4806",
+  "git_branch": "calkit-integration",
+  "git_changed_files_before": [
+    "docs/calkit.md"
+  ],
+  "git_staged_files_before": [],
+  "git_untracked_files_before": [
+    ".calkit/systems/913ccbf596607670296729091ec03da8eef64ba8.json"
+  ],
+  "git_changed_files_after": [
+    "docs/calkit.md"
+  ],
+  "git_staged_files_after": [],
+  "git_untracked_files_after": [
+    ".calkit/systems/913ccbf596607670296729091ec03da8eef64ba8.json"
+  ],
+  "dvc_status_before": {
+    "_check-env-main": [
+      "always changed"
+    ],
+    "_clean-nb-run-notebook": [
+      {
+        "changed deps": {
+          "src/Finetune_ResNet.ipynb": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": []
+  },
+  "dvc_status_after": {
+    "_check-env-main": [
+      "always changed"
+    ],
+    "_clean-nb-run-notebook": [
+      {
+        "changed deps": {
+          "src/Finetune_ResNet.ipynb": "modified"
+        }
+      }
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": []
+  }
+}

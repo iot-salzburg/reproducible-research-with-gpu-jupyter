@@ -1,5 +1,24 @@
 # Turning this into a Calkit project
 
+## Setup
+
+Create a virtual-env:
+
+```bash
+cd reproducible-research-with-gpu-jupyter
+
+virtualenv .venv
+source .venv/bin/activate
+```
+
+Install calkit via pip
+
+```bash
+python -m pip install calkit-python
+```
+
+
+
 ## Create the project from the GitHub repo
 
 This was done in a fork, so keep in mind `calkit config remote` will
