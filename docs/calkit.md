@@ -2,6 +2,8 @@
 
 ## Setup
 
+Install
+
 Create a virtual-env:
 
 ```bash
@@ -17,6 +19,13 @@ Install calkit via pip
 python -m pip install calkit-python
 ```
 
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+curl -LsSf https://github.com/calkit/calkit/raw/refs/heads/main/scripts/install.sh | sh
+uv tool install --upgrade calkit-python
+```
 
 
 ## Create the project from the GitHub repo
