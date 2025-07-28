@@ -1,7 +1,0 @@
-2025-07-28 16:41:28,542 - INFO - Running stage '_check-env-main':
-2025-07-28 16:41:28,543 - INFO - > calkit check environment --name main
-2025-07-28 16:41:30,697 - INFO - Updating lock file 'dvc.lock'
-2025-07-28 16:41:30,812 - INFO - Stage '_clean-nb-run-notebook' didn't change, skipping
-2025-07-28 16:41:31,097 - INFO - Running stage 'run-notebook':
-2025-07-28 16:41:31,098 - INFO - > calkit nb execute --environment main --no-check --to html "src/Finetune_ResNet.ipynb"
-2025-07-28 17:00:16,539 - INFO - Updating lock file 'dvc.lock'
