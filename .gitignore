@@ -175,3 +175,4 @@ cython_debug/
 data
 *.local
 *.DS_Store
+.calkit/
