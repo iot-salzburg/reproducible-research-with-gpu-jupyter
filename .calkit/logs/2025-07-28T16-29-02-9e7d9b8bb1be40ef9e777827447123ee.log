@@ -1,0 +1,87 @@
+2025-07-28 16:29:04,063 - INFO - Running stage '_check-env-main':
+2025-07-28 16:29:04,064 - INFO - > calkit check environment --name main
+2025-07-28 16:29:33,088 - INFO - Updating lock file 'dvc.lock'
+2025-07-28 16:29:33,304 - INFO - Running stage '_clean-nb-run-notebook':
+2025-07-28 16:29:33,305 - INFO - > calkit nb clean "src/Finetune_ResNet.ipynb"
+2025-07-28 16:29:50,903 - INFO - Updating lock file 'dvc.lock'
+2025-07-28 16:29:51,170 - INFO - Running stage 'run-notebook':
+2025-07-28 16:29:51,171 - INFO - > calkit nb execute --environment main --no-check --to html "src/Finetune_ResNet.ipynb"
+2025-07-28 16:39:21,140 - ERROR - 
+Traceback (most recent call last):
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/repo/reproduce.py", line 187, in _reproduce
+    ret = repro_fn(stage, upstream=upstream, force=force_stage, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/repo/reproduce.py", line 117, in _reproduce_stage
+    ret = stage.reproduce(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/funcy/decorators.py", line 47, in wrapper
+    return deco(call, *dargs, **dkwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/stage/decorators.py", line 44, in rwlocked
+    return call()
+           ^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/funcy/decorators.py", line 68, in __call__
+    return self._func(*self._args, **self._kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/stage/__init__.py", line 448, in reproduce
+    self.run(**kwargs)
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/funcy/decorators.py", line 47, in wrapper
+    return deco(call, *dargs, **dkwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/stage/decorators.py", line 44, in rwlocked
+    return call()
+           ^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/funcy/decorators.py", line 68, in __call__
+    return self._func(*self._args, **self._kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/stage/__init__.py", line 614, in run
+    self._run_stage(dry, force, **kwargs)
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/funcy/decorators.py", line 47, in wrapper
+    return deco(call, *dargs, **dkwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/stage/decorators.py", line 44, in rwlocked
+    return call()
+           ^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/funcy/decorators.py", line 68, in __call__
+    return self._func(*self._args, **self._kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/stage/__init__.py", line 641, in _run_stage
+    return run_stage(self, dry, force, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/stage/run.py", line 182, in run_stage
+    run(stage, dry=dry, run_env=run_env)
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/stage/decorators.py", line 53, in wrapper
+    ret = f(stage, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/stage/run.py", line 153, in cmd_run
+    _run(executable, cmd, **kwargs)
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/stage/run.py", line 133, in _run
+    raise StageCmdFailedError(cmd, p.returncode)
+dvc.stage.exceptions.StageCmdFailedError: failed to run: calkit nb execute --environment main --no-check --to html "src/Finetune_ResNet.ipynb", exited with 1
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/cli/__init__.py", line 211, in main
+    ret = cmd.do_run()
+          ^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/cli/command.py", line 30, in do_run
+    return self.run()
+           ^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/commands/repro.py", line 11, in run
+    stages = self.repo.reproduce(**self._common_kwargs, **self._repro_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/repo/__init__.py", line 58, in wrapper
+    return f(repo, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/repo/scm_context.py", line 143, in run
+    return method(repo, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/repo/reproduce.py", line 248, in reproduce
+    return _reproduce(steps, graph=graph, on_error=on_error or "fail", **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/repo/reproduce.py", line 191, in _reproduce
+    _raise_error(exc, stage)
+  File "/home/cschranz/.local/share/uv/tools/calkit-python/lib/python3.12/site-packages/dvc/repo/reproduce.py", line 155, in _raise_error
+    raise ReproductionError(f"failed to reproduce{segment} {names}") from exc
+dvc.exceptions.ReproductionError: failed to reproduce 'run-notebook'

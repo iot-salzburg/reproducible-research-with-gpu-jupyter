@@ -2,12 +2,10 @@
     "RepoTags": [
         "reproducible-research-with-gpu-jupyter-main:latest"
     ],
-    "RepoDigests": [
-        "reproducible-research-with-gpu-jupyter-main@sha256:85ba7310b99226f4c62642da890d30d1f0b26a0406b0952f39006a75ed38cbf6"
-    ],
+    "RepoDigests": [],
     "Architecture": "amd64",
     "Os": "linux",
-    "Size": 8395204785,
+    "Size": 17844378098,
     "RootFS": {
         "Type": "layers",
         "Layers": [
@@ -71,10 +69,10 @@
             "sha256:9c45106f8a62da27f812eab0abf8b1a4d6f3e26121143dbf69170ab47f3120cd",
             "sha256:8d433646ef093c0b412b1092a319bccf830ddacab8785063099663d4f9b57370",
             "sha256:44dd3d6b932c1255fe5487c48b8eb9bec2be026ab1f6b4f6796b6dacd8a231e7",
-            "sha256:f4fe91c51d56c095c4cdbc80f8d3c5977c4bfc9acd57b3b43b2bd17e63a670f0",
-            "sha256:9030154cad81bc583fbd57e1cf6b9a69a38c327c9f7eb593775a14ddda5c8718",
-            "sha256:b747ea5c71493d52a2cf471c4390e78f514240fc23279725e2da1b37b2b0b8b5",
-            "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+            "sha256:2da0eeb0f12832069184fd0c761fcb29f7ae90364376220c5436030421ce4d50",
+            "sha256:377e61da1b18f25ac9e19706fcf8bc2ad06b683828d1d64e49a08750badc3211",
+            "sha256:f83991f95f58f7869cdb15dfceae7c186d9923ef83a09849c7f4a123e7e0e545",
+            "sha256:629235d938bc1704c4739b9696eff2c5a682062ff84fa3a08717fe2baca9be84",
             "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
         ]
     },
