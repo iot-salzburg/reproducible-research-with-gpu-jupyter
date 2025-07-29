@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   gpu_jupyter:
     container_name: gpu-jupyter
@@ -13,16 +12,16 @@ services:
             - driver: nvidia
               capabilities: [gpu]
               device_ids: ["all"]  # Select a specific GPU by its ID or "all"
-#    set CPU constraints
-        limits:
-          cpus: "31.0"
-          memory: 48g
-    cpuset: 3-31
+  #  set CPU constraints
+    #     limits:
+    #       cpus: "31.0"
+    #       memory: 48g
+    # cpuset: 3-31
     ports:
       - 8848:8888
     # Mount the whole project's directory into work
-    # volumes:
-    #  - /path/to/project:/home/jovyan/work
+    volumes:
+     - ./:/home/jovyan/work
     environment:
       GRANT_SUDO: "yes"
       JUPYTER_ENABLE_LAB: "yes"
